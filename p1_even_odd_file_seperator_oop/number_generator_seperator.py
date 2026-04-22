@@ -14,8 +14,7 @@ class RandomNumberGenerator:
         return [random.randint(self.start, self.end) for _ in range(self.count)]
 
 class EvenNumberProcessor:
-    """Identifies if a number is an even number from the list of numbers"""
-
+    
     def __init__(self, input_file):
         self.input_file = input_file
         self.numbers = []
@@ -26,4 +25,20 @@ class EvenNumberProcessor:
             for line in file:
                 num = int(line.strip())
                 self.numbers.append(num) 
-    
+                
+    def identify_even(self): 
+        for num in self.numbers:
+            if num % 2 == 0: 
+                self.even_numbers.append(num)
+
+    def save_list_even(self, output_file = "even_numbers.txt"): 
+        self.read_file() 
+        self.identify_even()
+        with open(output_file, "w") as file:
+            for num in self.even_numbers:
+                file.write(str(num) + "\n")
+                
+        print(f"Succesfully Created {output_file} containing {len(self.even_numbers)} even numbers.")
+        
+        
+                
