@@ -14,6 +14,7 @@ class RandomNumberGenerator:
         return [random.randint(self.start, self.end) for _ in range(self.count)]
 
 class EvenNumberProcessor:
+    """Process integers from a file and idenfity even numbers."""
     
     def __init__(self, input_file):
         self.input_file = input_file
@@ -38,7 +39,10 @@ class EvenNumberProcessor:
             for num in self.even_numbers:
                 file.write(str(num) + "\n")
                 
-        print(f"Succesfully Created {output_file} containing {len(self.even_numbers)} even numbers.")
+        print(f"Succesfully created {output_file} containing {len(self.even_numbers)} even numbers.")
         
-        
-                
+class OddNumberProcessor(EvenNumberProcessor): 
+    
+    def __init__(self, input_file): 
+        super().__init__(input_file)
+        self.odd_numbers = []
