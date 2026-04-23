@@ -12,9 +12,15 @@ class RandomNumberGenerator:
     
     def randint_gen(self):
         file_name = "numbers.txt"
+        if self.count <= 0: 
+            print("Count must be greate than 0")
+            return
+        if self.start > self.end: 
+            print("Start must be less than or equal to end.")
+        
         number_file = [random.randint(self.start, self.end) for _ in range(self.count)]
-        for num in number_file:
-            with open(file_name, "w") as file: 
+        with open(file_name, "w") as file: 
+            for num in number_file:
                 file.write(str(num) + "\n")
             
         print(f"Succesfully created {file_name} containing 20 random integers")
@@ -29,12 +35,22 @@ class EvenNumberProcessor:
         self.even_numbers = []
         
     def read_file(self):
-        with open(self.input_file, "r") as file: 
-            for line in file:
-                num = int(line.strip())
-                self.numbers.append(num) 
-                
-    def identify_even(self): 
+        try: 
+            with open(self.input_file, "r") as file: 
+                for line in file:
+                    try:
+                        self.numbers.append(int(line.strip()))
+                    except Exception as e: 
+                        print(f"Error occured! {e}")
+                        
+        except FileNotFoundError:
+            print(f"Error: file '{self.input_file}' not found.")
+                    
+    def identify_even(self):
+        if not self.numbers:
+            print("No data to process.")
+            return
+        
         for num in self.numbers:
             if num % 2 == 0: 
                 self.even_numbers.append(num)
@@ -42,12 +58,16 @@ class EvenNumberProcessor:
     def save_list_even(self, output_file = "even.txt"): 
         self.read_file() 
         self.identify_even()
-        with open(output_file, "w") as file:
-            for num in self.even_numbers:
-                file.write(str(num) + "\n")
+        try: 
+            with open(output_file, "w") as file:
+                for num in self.even_numbers:
+                    file.write(str(num) + "\n")
                 
-        print(f"Succesfully created {output_file} containing {len(self.even_numbers)} even numbers.")
-        
+            print(f"Succesfully created {output_file} containing {len(self.even_numbers)} even numbers.")
+            
+        except Exception as e: 
+            print("Error occured! {e}")
+            
 class OddNumberProcessor(EvenNumberProcessor): 
     
     def __init__(self, input_file): 
@@ -55,6 +75,10 @@ class OddNumberProcessor(EvenNumberProcessor):
         self.odd_numbers = []
     
     def identify_odd(self):
+        if not self.numbers:
+            print("No data to process.")
+            return 
+        
         for num in self.numbers:
             if num % 2 != 0: 
                 self.odd_numbers.append(num)
