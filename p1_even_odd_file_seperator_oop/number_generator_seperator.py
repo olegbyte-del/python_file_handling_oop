@@ -11,7 +11,14 @@ class RandomNumberGenerator:
         self.end = end 
     
     def randint_gen(self):
-        return [random.randint(self.start, self.end) for _ in range(self.count)]
+        file_name = "numbers.txt"
+        number_file = [random.randint(self.start, self.end) for _ in range(self.count)]
+        for num in number_file:
+            with open(file_name, "w") as file: 
+                file.write(str(num) + "\n")
+            
+        print(f"Succesfully created {file_name} containing 20 random integers")
+        
 
 class EvenNumberProcessor:
     """Process integers from a file and idenfity even numbers."""
@@ -32,7 +39,7 @@ class EvenNumberProcessor:
             if num % 2 == 0: 
                 self.even_numbers.append(num)
 
-    def save_list_even(self, output_file = "even_numbers.txt"): 
+    def save_list_even(self, output_file = "even.txt"): 
         self.read_file() 
         self.identify_even()
         with open(output_file, "w") as file:
@@ -46,3 +53,18 @@ class OddNumberProcessor(EvenNumberProcessor):
     def __init__(self, input_file): 
         super().__init__(input_file)
         self.odd_numbers = []
+    
+    def identify_odd(self):
+        for num in self.numbers:
+            if num % 2 != 0: 
+                self.odd_numbers.append(num)
+    
+    def save_list_odd(self, output_file = "odd.txt"):
+        self.read_file()
+        self.identify_odd()
+        with open(output_file, "w") as file:
+            for num in self.odd_numbers:
+                file.write(str(num) + "\n")
+        
+        print(f"Succesfully created {output_file} containing {len(self.odd_numbers)} odd numbers.")
+        
