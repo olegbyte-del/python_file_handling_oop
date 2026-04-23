@@ -17,6 +17,7 @@ class RandomNumberGenerator:
             return
         if self.start > self.end: 
             print("Start must be less than or equal to end.")
+            return
         
         number_file = [random.randint(self.start, self.end) for _ in range(self.count)]
         with open(file_name, "w") as file: 
