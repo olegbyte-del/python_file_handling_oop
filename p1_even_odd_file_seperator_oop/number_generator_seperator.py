@@ -1,7 +1,24 @@
 # Number Generator & Seperator Program
 
 import random 
+import os
 
+
+class FileManage: 
+    """Allows to delete the recent file for new values of integers"""
+    files = ["numbers.txt", "even.txt", "odd.txt"]
+    
+    def reset_files():
+        for file in FileManage.files:
+            
+            if os.path.exists(file): 
+                os.remove(file)
+                print(f"{file} deleted.")
+                
+            else:
+                print(f"{file} does not exist")
+                
+                
 class RandomNumberGenerator:
     """Generates random integers based on count, start, and end range."""
         

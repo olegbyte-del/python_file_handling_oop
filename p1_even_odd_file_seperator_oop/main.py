@@ -39,7 +39,30 @@ while True:
             print(number_list)
 
             input("\nPress Enter to continue...")
-
+        
+        elif user_input == 2:
+            print("="*50, "Options".center(50), "="*50, sep = "\n")
+            print("[1] Identify even",
+                "[2] Identify even + create file",
+                "[3] back", "="* 50, sep="\n")
+            
+            user_choice = int(input())
+            
+            even_processor = EvenNumberProcessor("numbers.txt")
+                        
+            if user_choice == 1:
+                even_processor.read_file()
+                even_processor.identify_even()
+                print("Even numbers:", even_processor.even_numbers)
+            
+            elif user_choice == 2: 
+                even_processor.save_list_even()
+                list_even = even_processor.readfile("even.txt")
+                print("Even numbers:", even_processor.even_numbers)
+            
+            elif user_choice == 3:
+                pass
+                
         elif user_input == 0:
             print("Exiting the program...")
             break
