@@ -2,6 +2,6 @@
 
 import student_manager as sm 
 
-create_file = sm.StudentGenerator.remove_files()
+create_file = sm.StudentAnalysis()
 
-create_file
+create_file.highest()
