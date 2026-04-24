@@ -2,6 +2,7 @@
 from number_generator_seperator import RandomNumberGenerator
 from number_generator_seperator import EvenNumberProcessor
 from number_generator_seperator import OddNumberProcessor
+from number_generator_seperator import FileManage
 
 while True:
     try:
@@ -12,6 +13,7 @@ while True:
         print("[1] Generate Numbers + file")
         print("[2] Process Even Numbers")
         print("[3] Process Odd Numbers")
+        print("[4] Reset")
         print("[0] Exit")
         print("="*50)
 
@@ -57,11 +59,32 @@ while True:
             
             elif user_choice == 2: 
                 even_processor.save_list_even()
-                list_even = even_processor.readfile("even.txt")
                 print("Even numbers:", even_processor.even_numbers)
             
-            elif user_choice == 3:
-                pass
+        elif user_input == 3:
+            print("="*50, "Options".center(50), "="*50, sep = "\n")
+            print("[1] Identify odd",
+                "[2] Identify odd + create file",
+                "[3] back", "="* 50, sep="\n")
+                
+            user_choice = int(input())
+                
+            odd_processor = OddNumberProcessor("numbers.txt")
+                            
+            if user_choice == 1:
+                odd_processor.read_file()
+                odd_processor.identify_odd()
+                print("Odd numbers:", odd_processor.odd_numbers)
+                
+            elif user_choice == 2: 
+                odd_processor.save_list_odd()
+                print("Odd numbers:", odd_processor.odd_numbers)
+                    
+            pass
+                
+        elif user_input == 4: 
+            FileManage.reset_files()
+            pass
                 
         elif user_input == 0:
             print("Exiting the program...")
