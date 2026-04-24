@@ -2,4 +2,6 @@
 
 import student_manager as sm 
 
-create_file = sm.StudentGenerator.generate_student_file()
+create_file = sm.StudentGenerator.remove_files()
+
+create_file

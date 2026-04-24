@@ -1,10 +1,12 @@
 # Student Manager
 
 import random
+import os
 
 class StudentGenerator:
+    filename = "students_list.txt"
     
-    def generate_student_file(filename = "students_list.txt"):
+    def generate_student_file():
         students = []
         
         first_names = [
@@ -24,7 +26,11 @@ class StudentGenerator:
             gwa = round(random.uniform(1.00, 3.00), 2)
             students.append((name, gwa))
         
-        with open(filename, "w") as file:
+        with open(StudentGenerator.filename, "w") as file:
             for name, gwa in students:
                 file.write(f"{name}, {gwa}\n")
-            
+
+    def remove_files():
+        if os.path.exists(StudentGenerator.filename):
+            os.remove(StudentGenerator.filename)
+            print(f"{StudentGenerator.filename} deleted.")
