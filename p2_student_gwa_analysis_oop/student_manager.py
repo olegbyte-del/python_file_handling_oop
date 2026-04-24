@@ -54,4 +54,4 @@ class StudentAnalysis():
                 self.highest_gwa = grade  
                 self.highest_student = name
                 
-        print(f"{self.highest_student} is the top of the class! with a GWA of {self.highest_gwa}.")
+        print(f"{self.highest_student} is the top of the class! with a GWA of {self.highest_gwa}")
