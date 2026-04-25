@@ -23,6 +23,12 @@ class FileManager:
                     if additional_input == "n": 
                         print(f"Successfully created {FileManager.filename}!")
                         break
+                    
+                    elif additional_input == "y":
+                        continue
+                    
+                    else: 
+                        print("Invalid input! y/n only...")
                         
                 except Exception as e:
                     print(f"Error Occured! {e}")
