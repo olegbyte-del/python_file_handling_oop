@@ -1,10 +1,14 @@
 # File and line generator
 
 class FileManager:
+    """Handles creation of a text fie and allows the user to input multiple lines
+    stores all input lines into a file and displays them after completion"""
 
     filename = input("What will be the name of the file?: ") + ".txt"
         
     def create_file():
+        """Creates a text file and allows the user to input multiple lines"""
+        
         count = 0 
         lines = []
             
@@ -16,7 +20,6 @@ class FileManager:
                     file.write(user_input + "\n")
                     lines.append(user_input)
                     count += 1
-                            
                             
                     additional_input = input("Are there more lines y/n?: ").lower()
                             
