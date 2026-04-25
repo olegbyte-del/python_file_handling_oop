@@ -86,7 +86,8 @@ class EvenNumberProcessor:
         except Exception as e: 
             print("Error occured! {e}")
             
-class OddNumberProcessor(EvenNumberProcessor): 
+class OddNumberProcessor(EvenNumberProcessor):
+    """Process integers from a file and idenfity odd numbers."""
     
     def __init__(self, input_file): 
         super().__init__(input_file)
