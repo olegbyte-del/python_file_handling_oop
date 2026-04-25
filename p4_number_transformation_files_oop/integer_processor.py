@@ -46,6 +46,26 @@ class FileManager:
         
         else:
             print("Invalid input!")
+    
+    def remove_all_files():
+        files = ["integers.txt", "double.txt", "triple.txt"]
+        print(f"Are you sure you want to delete the corresponding files: {files} y/n")
+        confirmation = input("").lower()
+        
+        if confirmation == "y": 
+            for file in files:
+                if os.path.exists(file):
+                    os.remove(file)
+                    print(f"Deleted: {file}")
+                else:
+                    print(f"File not found: {file}")
+            
+            print(f"Deletion of files finished.")
+            
+        elif confirmation == "n":
+            print(f"Deletion cancelled..")
+        else:
+            print("Invalid input")
 
 class NumberAnalysis(FileManager):
     
@@ -109,7 +129,7 @@ class NumberAnalysis(FileManager):
             print(f"Odd Cubed Integers:  {odd_cubed}")
             print("="*100)
                 
-        print(f"Successfully created 'double.txt' and 'triple.txt'")
+        print(f"Successfully created 'double.txt' and 'triple.txt'").center(50)
         print("="*50)
         
         
