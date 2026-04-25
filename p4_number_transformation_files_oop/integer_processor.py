@@ -64,3 +64,19 @@ class NumberAnalysis():
         print("="*50)
         print(f"Total number of even: {even_count}").center(50)
         print("="*50)
+    
+    def odd_analysis():
+        odd_count = 0
+        odd_numbers = []
+        
+        with open(FileManager.filename, "r") as file:
+            for line in file:
+                num = int(line.strip())
+                
+                if num % 2 != 0:
+                    odd_numbers.append(num)
+                    odd_count += 1
+        
+        print("="*50)
+        print(f"Total number of odd: {odd_count}").center(50)
+        print("="*50)
