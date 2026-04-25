@@ -18,30 +18,32 @@ class FileManager:
         
         return number_list
     
-    def create_file():
+    def create_file(self):
         """Creates a file with 20 random integers based on user-defined range."""
         count = 20
         random_numbers = []
         
-        start = int(input("Number will start: "))
-        end = int(input("Number will End: "))
-        
-        if start >= end:
-            print("Invalid range! Start must be less than End.", "="*50, "Press enter to start again...", sep="\n")
-            input("Press enter to continue")
+        while True:
+            start = int(input("Number will start: "))
+            end = int(input("Number will End: "))
             
+            if start < end:
+                break
+            else:
+                print("Invalid range! Start must be less than End.")
+        
         for _ in range(count):
-                random_numbers.append(random.randint(start, end))
+            random_numbers.append(random.randint(start, end))
         
         with open(FileManager.filename, "w") as file: 
             for num in random_numbers:
                 file.write(str(num) + "\n")
             
             print(f"{FileManager.filename} successfully created!")
-            input("Press enter to continue")
             
-    def remove_file():
+    def remove_file(self):
         """Deletes the main integer file after user confirmation."""
+        
         print(f"Are you sure you want to delete '{FileManager.filename}'? y/n ")
         confirmation = input("").lower()
         
@@ -56,7 +58,7 @@ class FileManager:
         else:
             print("Invalid input!")
     
-    def remove_all_files():
+    def remove_all_files(self):
         """Deletes all generated output files."""
         files = ["integers.txt", "double.txt", "triple.txt"]
         print(f"Are you sure you want to delete the corresponding files: {files} y/n")
@@ -147,5 +149,5 @@ class NumberAnalysis(FileManager):
             print(f"Odd Cubed Integers:  {odd_cubed}")
             print("="*100)
                 
-        print(f"Successfully created 'double.txt' and 'triple.txt'").center(50)
+        print("Successfully created 'double.txt' and 'triple.txt'".center(50))
         print("="*50)

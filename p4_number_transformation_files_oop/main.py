@@ -1,10 +1,9 @@
 # Main Program
 
-# Main Program
-
 import integer_processor as ip
 
 analysis = ip.NumberAnalysis()
+option = ip.FileManager()
 
 while True:
     try:
@@ -27,16 +26,16 @@ while True:
 
                 user_choice = input("Enter choice: ")
 
-                if user_choice == "1":
-                    ip.FileManager.create_file()
+                if user_choice == "1": 
+                    option.create_file()
                     input("Press enter to continue...")
 
                 elif user_choice == "2":
-                    ip.FileManager.remove_file()
+                    option.remove_file()
                     input("Press enter to continue...")
 
                 elif user_choice == "3":
-                    ip.FileManager.remove_all_files()
+                    option.remove_all_files()
                     input("Press enter to continue...")
 
                 elif user_choice == "0":
