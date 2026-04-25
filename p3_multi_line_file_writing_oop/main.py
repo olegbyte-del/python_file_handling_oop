@@ -16,6 +16,7 @@ while True:
         
         elif user_input == 0:
             print("Exiting the program...")
+            break
         
         else:
             print("Invalid input! Try again.")

@@ -4,7 +4,7 @@ class FileManager:
     """Handles creation of a text fie and allows the user to input multiple lines
     stores all input lines into a file and displays them after completion"""
 
-    filename = input("What will be the name of the file?: ") + ".txt"
+    filename = "mylife.txt"
         
     def create_file():
         """Creates a text file and allows the user to input multiple lines"""
