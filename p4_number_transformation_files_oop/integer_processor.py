@@ -7,6 +7,15 @@ class FileManager:
     
     filename = "integers.txt"
     
+    def read_file():
+        number_list = []
+        
+        with open(FileManager.filename, "r") as file:
+            for line in file:
+                number_list.append(int(line.strip()))
+        
+        print(f"="*50, {number_list}, "="*50)
+    
     def create_file():
         count = 20
         random_numbers = []

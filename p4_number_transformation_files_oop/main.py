@@ -2,4 +2,4 @@
 
 import integer_processor as ip 
 
-ip.FileManager.create_file()
+ip.FileManager.read_file()
