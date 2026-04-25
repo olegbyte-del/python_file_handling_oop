@@ -4,9 +4,14 @@ import random
 import os
 
 class StudentGenerator:
+    
+    """Handles the creation and deletion of student records stored in a text file.
+        Each record contains a randomly generated student name and GWA."""
     filename = "students_list.txt"
     
     def generate_student_file():
+        """Generate 20 random students records and writes them to a text file"""
+
         students = []
         
         first_names = [
@@ -31,17 +36,21 @@ class StudentGenerator:
                 file.write(f"{name}, {gwa}\n")
 
     def remove_files():
+        """Deletes the student file if it exist"""
+        
         if os.path.exists(StudentGenerator.filename):
             os.remove(StudentGenerator.filename)
             print(f"{StudentGenerator.filename} deleted.")
             
 class StudentAnalysis():
-    
+    """Process student records from a file and performs analysis"""
     def __init__(self, filename = "students_list.txt"):
         self.filename = filename
         self.students = []
     
     def highest(self):
+        """Read studen records from file and determines the student with the highest gwa"""
+        
         self.highest_gwa = None
         self.highest_student = ""
         with open(self.filename, "r") as file:
