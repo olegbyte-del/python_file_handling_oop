@@ -14,7 +14,7 @@ class FileManager:
             for line in file:
                 number_list.append(int(line.strip()))
         
-        print(f"="*50, {number_list}, "="*50)
+        print(f"="*100, number_list, "="*100, sep="\n")
     
     def create_file():
         count = 20
@@ -46,3 +46,21 @@ class FileManager:
         
         else:
             print("Invalid input!")
+
+class NumberAnalysis():
+    
+    def even_analysis():
+        even_count = 0
+        even_numbers = []
+        
+        with open(FileManager.filename, "r") as file:
+            for line in file:
+                num = int(line.strip())
+                
+                if num % 2 == 0:
+                    even_numbers.append(num)
+                    even_count += 1
+        
+        print("="*50)
+        print(f"Total number of even: {even_count}").center(50)
+        print("="*50)
