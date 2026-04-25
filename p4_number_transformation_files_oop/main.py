@@ -2,6 +2,6 @@
 
 import integer_processor as ip 
 
-ip.FileManager.read_file()
+analysis = ip.NumberAnalysis()
 
-ip.NumberAnalysis.even_analysis()
+analysis.square_cube_analysis()

@@ -7,14 +7,14 @@ class FileManager:
     
     filename = "integers.txt"
     
-    def read_file():
+    def read_file(self):
         number_list = []
         
         with open(FileManager.filename, "r") as file:
             for line in file:
                 number_list.append(int(line.strip()))
         
-        print(f"="*100, number_list, "="*100, sep="\n")
+        return number_list
     
     def create_file():
         count = 20
@@ -47,9 +47,9 @@ class FileManager:
         else:
             print("Invalid input!")
 
-class NumberAnalysis():
+class NumberAnalysis(FileManager):
     
-    def even_analysis():
+    def even_analysis(self):
         even_count = 0
         even_numbers = []
         
@@ -65,7 +65,7 @@ class NumberAnalysis():
         print(f"Total number of even: {even_count}").center(50)
         print("="*50)
     
-    def odd_analysis():
+    def odd_analysis(self):
         odd_count = 0
         odd_numbers = []
         
@@ -80,3 +80,36 @@ class NumberAnalysis():
         print("="*50)
         print(f"Total number of odd: {odd_count}").center(50)
         print("="*50)
+    
+    def square_cube_analysis(self):
+        numbers = self.read_file()
+        
+        even_squared = []
+        odd_cubed = []
+        
+        for num in numbers:
+            if num % 2 == 0:
+                even_squared.append(num ** 2)
+            else: 
+                odd_cubed.append(num ** 3)
+                
+        with open("double.txt", "w") as file:
+            for num in even_squared:
+                file.write(str(num) + "\n")
+            
+            print("="*100)
+            print(f"Even Squared Integers:  {even_squared}")
+            print("="*100)
+            
+        with open("triple.txt", "w") as file:
+            for num in odd_cubed:
+                file.write(str(num) + "\n")
+            
+            print("="*100)
+            print(f"Odd Cubed Integers:  {odd_cubed}")
+            print("="*100)
+                
+        print(f"Successfully created 'double.txt' and 'triple.txt'")
+        print("="*50)
+        
+        
